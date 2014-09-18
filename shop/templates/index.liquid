@@ -1,0 +1,65 @@
+
+<div class="span8">
+  
+  <!-- slider -->
+  {% if settings.slide_1 or settings.slide_2 or settings.slide_3 or settings.slide_4 %}
+    <div class="flexslider-container">
+      <div class="flexslider">
+        <ul class="slides">
+          {% for i in (1..4) %}
+            {% capture show_slide %}slide_{{ i }}{% endcapture %}
+            {% capture image %}slideshow_{{ i }}.jpg{% endcapture %}
+            {% capture link %}slide_{{ i }}_link{% endcapture %}
+            {% capture alt %}slide_{{ i }}_alt{% endcapture %}
+            {% if settings[show_slide] %}
+            <li>
+              <a href="{{ settings[link] }}">
+                <img src="{{ image | asset_url }}" alt="{{ settings[alt] | escape }}" />
+              </a>
+            </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <div class="flex-controls"></div>
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- TODO: create liquid code that pulls banner image from assets so it can easily be changed by client-->
+  <div class="banner">
+    <a href="/collections/custom">
+      <img src="http://cdn.shopify.com/s/files/1/0420/0513/files/banner_04152014big.jpg?8797" />  
+    </a>  
+  </div>
+
+</div>
+
+<!-- sidebar -->
+<div class="span4">
+  
+  <ul class="button-grid">
+    <li class="button-cell shop">
+      <a href="/collections/all"><h2>shop</h2></a>
+    </li>
+    <li class="button-cell create">
+      <a href="/collections/custom"><h2>create</h2></a>
+    </li>
+    <li class="button-cell diy">
+      <a href="/blogs/lupa-and-pepi/tagged/diy"><h2>d.i.y.</h2></a>
+    </li>
+    <li class="button-cell no-border">
+      <a href="/blogs/lupa-and-pepi"><img src="http://cdn.shopify.com/s/files/1/0420/0513/files/and-more_2x.jpg?8709"></a>
+    </li>
+  </ul>
+
+  <div class="square-banner">
+    <a class="fancybox" rel="knotmag" title="Page 1 of 5" href="{{ 'knotmag_spread1_web.jpg' | asset_url }}">
+      <img src="{{ 'knot-feature.jpg' | asset_url }}">
+    </a>
+    <a class="fancybox" rel="knotmag" title="Page 2 of 5" href="{{ 'knotmag_spread2_web.jpg' | asset_url }}"></a>
+    <a class="fancybox" rel="knotmag" title="Page 3 of 5" href="{{ 'knotmag_spread3_web.jpg' | asset_url }}"></a>
+    <a class="fancybox" rel="knotmag" title="Page 4 of 5" href="{{ 'knotmag_spread4_web.jpg' | asset_url }}"></a>
+    <a class="fancybox" rel="knotmag" title="Page 5 of 5" href="{{ 'knotmag_spread5_web.jpg' | asset_url }}"></a>
+  </div>
+
+</div>

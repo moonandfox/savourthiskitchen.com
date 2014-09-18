@@ -1,0 +1,36 @@
+<ul class="horizontal unstyled clearfix">
+
+  <!-- legendary jankiness -->
+  {% assign is_diy_active = false %}
+  {% for link in linklists.main-menu.links %}
+    {% if link.url == '/blogs/lupa-and-pepi/tagged/diy' and link.active %}
+      {% assign is_diy_active = true %}
+    {% endif %}
+  {% endfor %}
+
+  {% for link in linklists.main-menu.links %}
+  {% if linklists[link.handle] == empty %}
+  <li>
+
+    <!-- legendary jankiness: part deux -->
+    {% assign link_active = link.active %}
+    {% if link.url == '/blogs/lupa-and-pepi' and is_diy_active %}
+      {% assign link_active = false %}
+    {% endif %}
+
+    <a href="{{ link.url }}" class="{% if link_active %} current{% endif %}">
+        <span>{{ link.title }}</span>
+      </a>
+  </li>
+  {% else %}
+  <li class="dropdown"><a href="{{ link.url }}" class="{% if link.active %} current{% endif %}">
+    <span>{{ link.title }}</span></a>
+    <ul class="dropdown">
+      {% for l in linklists[link.handle].links %}
+      <li><a href="{{ l.url }}"{% if l.active %} class="current"{% endif %}>{{ l.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </li>
+  {% endif %}
+  {% endfor %}
+</ul>

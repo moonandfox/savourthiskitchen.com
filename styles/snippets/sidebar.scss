@@ -1,0 +1,172 @@
+
+.sidebar-links {
+  
+  padding-left: 0;
+  margin: 0 0 16px 0;
+  list-style: none;
+  
+  li {
+    margin: 4px 0;
+    text-align: center;
+    
+    a {
+      display: inline-block;
+    }
+    
+    &:first-child {
+      margin-top: 0;
+    }
+    
+    &:nth-child(odd) {
+      background-image: url("http://cdn.shopify.com/s/files/1/0420/0513/files/ShopWashi_white1X.jpg?9041");
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 65px;
+      line-height: 65px;
+      
+      @include hidpi {
+        background-image: url("http://cdn.shopify.com/s/files/1/0420/0513/files/ShopWashi_white2X.jpg?9041");
+        background-size: 100% 100%;
+      }
+    }
+    
+    &:nth-child(even) {
+      background-image: url("http://cdn.shopify.com/s/files/1/0420/0513/files/CreateWashi_white1X.jpg?9041");
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 61px;
+      line-height: 61px;
+      
+      @include hidpi {
+        background-image: url("http://cdn.shopify.com/s/files/1/0420/0513/files/CreateWashi_white2X.jpg?9041");
+        background-size:100% 100%;
+      }
+    }
+  }
+  
+  .link-heading {
+    color: $orange;
+    font-family: $heading-font;
+    font-size: 28px;
+    font-weight: normal;
+  }
+  .link-description {
+    color: $dark-grey;
+    font-family: $reading-font;
+    font-size: 16px;
+  }
+}
+
+.collab-box{
+  background-image: url("{{ 'bg-small-paper_1x.png' | asset_url }}");
+  background-repeat:no-repeat;
+  min-height:140px;
+  padding: 25px 30px 25px 15px;
+  box-sizing:border-box;
+  margin: 15px 0 15px 0;
+  text-align:right;
+  font-size:14px;
+  
+  @include hidpi {
+    background-image: url("{{ 'bg-small-paper_2x.png' | asset_url }}");
+    background-size:100% 100%;
+  }
+}
+.collab-arrow{
+  position: relative;
+  bottom: 20px;
+  left: 10px;
+}
+
+.instagram-box {
+  background-image: url("{{ 'instagram-background.jpg' | asset_url }}");
+  height: 325px;
+  margin: 0 0 16px 0;
+}
+
+.instagram-widget {
+  width: 275px;
+  margin: 0 auto;
+  display: block;
+  padding-top: 12px;
+}
+
+#iframe-wrapper {
+   position: relative;
+}
+
+#iframe-blocker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 275px;
+  height: 275px;
+}
+
+.fine-print{
+  background-image: url("{{ 'bg-long-paper_1x.png' | asset_url }}");
+  background-repeat:no-repeat;
+  min-height:645px;
+  padding: 65px 30px 25px 30px;
+  box-sizing:border-box;
+  margin: 15px 0 15px 0;
+  font-size:12px;
+
+  @include hidpi {
+    background-image: url("{{ 'bg-long-paper_2x.png' | asset_url }}");
+    background-size:100% 100%;
+  }
+  
+  .pic-wrapper{
+    width: 100%;
+    text-align: center;
+    margin: 0 0 5px 0;
+  }
+  p{
+    line-height:16px;
+  }
+}
+
+
+@media only screen and (max-width: $desktop-slim-max-width) {
+
+  .sidebar-links {
+    li:nth-child(odd),
+    li:nth-child(even) {
+      background-size: 100% 100%;
+    }
+    .link-description {
+      display: none;
+    }
+  }
+
+  .collab-box,
+  .fine-print {
+    background-size: 100% 100%;
+  }
+  
+}
+
+@media only screen and (min-width: $mobile-landscape-min-width) and (max-width: $desktop-slim-max-width) {
+  .fine-print{
+    background:none;
+    border:$grey-dotted-border;
+    padding: 40px 14px 0px 14px;
+    min-height: 0;
+  }
+  .instagram-box {
+    display: none;
+  }
+  .collab-arrow{
+    display:none;
+  }
+}
+
+@media only screen and (max-width: $mobile-portrait-max-width) {
+  .sidebar-links {
+    .link-description {
+      display: inline;
+      font-size: 15px;
+    }
+  }
+}

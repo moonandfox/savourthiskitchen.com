@@ -1,0 +1,249 @@
+
+//storefront page item title
+.product .title{
+	color: $dark-grey;
+	font-family: $reading-font;
+	font-weight: normal;
+	text-align: center;
+}
+//don't display price of items in storefront
+/*.price{
+	display: none;
+}*/
+//shop pagination 'next' button
+.pagination li a{
+	background: none;
+	color: $dark-grey;
+}
+.pagination li{
+	position: relative;
+	padding: 0;
+}
+//product detail page item title
+#product h1{
+	font-family: $reading-font;
+	font-weight: normal;
+	font-size: 22px;
+	line-height:26px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+.purchase h2.price{
+	font-size: 20px;
+	float: left;
+}
+#product h3.collection-title{
+	border-top: $grey-dotted-border;
+	border-bottom: $grey-dotted-border;
+	margin: 0 0 15px 0;
+	font-family: $reading-font;
+	padding: 0;
+	text-transform: uppercase;
+	color: $dark-grey;
+	font-size: 13px;
+
+}
+.product{
+	//min-height: 300px;
+	max-width: 250px;
+	min-height:230px;
+}
+.product-options select{float:none;}
+ul.pagination{
+	width: 100%;
+}
+.pagination.li{
+	font-size: 15px;
+}
+#collection .browse-tags{
+	padding-top: 0;
+}
+.shop-header{
+	border: 1px #b6b6b6 dashed;
+	padding: 20px 20px 10px 20px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.shop-header .subheading{
+	font-family: "Playfair Display";
+	text-transform: uppercase;
+	color: #7d7d7d;
+	font-size: 16px;
+	margin-bottom: 0;
+}
+.breadcrumb{
+	margin-bottom: 0;
+}
+#product h1{
+	border-bottom: $grey-dotted-border;
+}
+#product .thumbs{
+	padding-top: 5px;
+ .image{
+	  margin-top: 0;
+	  float: left;
+	  width: 75px;
+	  padding: 0 8px 0 0;
+	}
+}
+.filed-under{
+	margin-bottom: 20px;
+}
+.category-type-list{
+	ul{
+		list-style: none;
+		
+		a{
+			color: $dark-grey;
+		}
+		a:hover{
+			color: $orange;
+		}
+		
+	}
+}
+p.click-here{
+   margin: 15px 0 0 0;
+ }
+.shop-sidebar-title{
+	border-bottom: $grey-dotted-border;
+	color: $orange;
+	margin: 10px 0;
+}
+#add-item-form{
+	.button{
+		height: 32px;
+	}
+	* div{
+		margin-bottom: 10px;
+	}
+	* div label{
+		display:block;
+	}
+	* div input{
+	width: 60%;
+	}
+	* div input[type="text"]{
+		height: 16px;
+	}
+}
+.product.breadcrumb{
+	margin-bottom:0;
+}
+.product-detail-title{
+	text-transform: uppercase;
+	border-bottom: $grey-dotted-border;
+	margin: 30px 0 20px;
+	padding-bottom: 5px;
+	text-align: left;
+}
+.purchase h2.price{
+	font-size:15px !important;
+	margin-bottom: 0;
+}
+
+.product-options{
+	border: 0;
+	margin-bottom: 10px;
+	padding-bottom: 0;
+	padding-top: 0;
+}
+.pricing-title{
+	margin-bottom: 0;
+}
+#quantity-choice {
+	padding-top: 5px;
+}
+.personalize-title{
+	margin-top: 0;
+}
+.selector-wrapper label{
+	text-transform: uppercase;
+	border-bottom: $grey-dotted-border;
+	padding-bottom: 5px;
+	text-align: left;
+	margin-bottom: 10px;
+}
+.breadcrumbs-margin{
+	margin-bottom: 10px;
+}
+.product-hover{
+  display: block;
+  &:hover{
+  	.details h4{
+    color: $orange;
+	}
+  }
+}
+#product .featured{
+	margin-bottom: 0;
+}
+
+//old styles for pagination graphic
+// .pagination img {
+// 	position: absolute;
+// 	max-width: 35px;
+// 	top: -5px;
+// }
+
+// a.prev {
+// 	img {
+// 		position: absolute;
+// 		transform: rotate(180deg);
+// 		right: 10px;
+// 	}
+// }
+// a.next {
+// 	img {
+// 		left: 8px;
+// 	}
+// }
+
+.cart-header{
+    font-family: $reading-font;
+    font-size: 22px;
+    line-height: 26px;
+    margin: 0;
+  }
+#cart .price, #cart .remove {
+	text-align: center;
+}
+
+a.continue-shopping {
+	position: relative;
+	img {
+		position: absolute;
+		transform: rotate(180deg);
+		right: 120px;
+		top: -2px;
+	}
+}
+
+@media only screen and (max-width: $tablet-landscape-max-width) {
+	.product-list {
+		.third {
+			float: none;
+			width: 100%;
+			margin: 10px auto;
+			display: block;
+		}
+	}
+
+	.product .image {
+		overflow: inherit; // FIXME: why is this hidden?
+	}
+}
+
+@media only screen and (max-width: $mobile-landscape-max-width) and (min-width: $mobile-landscape-min-width) {
+	.products.span9,
+	.products.span9 + .span3 {
+		width: 450px;
+	}
+}
+@media only screen and (max-width: $mobile-portrait-max-width){
+	#add-item-form{
+		* div input{
+		width: 100%;
+		}
+	}
+}

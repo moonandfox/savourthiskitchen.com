@@ -1,0 +1,8 @@
+<div class="blog-category-jump">
+  <span>I'm looking for...</span>
+  <select name="blog-dropdown" id="blog-dropdown" class="loc_on_change">
+    {% for c in collections %}
+      <option value="{{ c.url }}">{{ c.title }}</option>
+    {% endfor %}
+  </select>
+</div>

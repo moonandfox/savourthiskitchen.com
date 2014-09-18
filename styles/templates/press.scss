@@ -1,0 +1,56 @@
+
+
+.press{
+  margin:0;
+}
+.press-box{
+  max-width: 200px;
+  margin: 0 auto;
+  display: block;
+  color: $dark-grey;
+  &:hover{
+    color: $orange;
+  }
+}
+.press-image, .press-image-fill{
+  min-height: 200px;
+  border: $grey-dotted-border;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 80%;
+}
+.press-image-fill{
+  background-size:100%;
+}
+.press-description {
+  min-height: 55px;
+}
+
+.press-pic-1{
+  background-image: url("{{ 'The-Knot-logo.png' | asset_url }}");
+}
+.press-pic-2{
+  background-image: url("{{ 'green-wedding-shoes-logo.png' | asset_url }}");
+}
+.press-pic-3{
+  background-image: url("{{ 'green-wedding-shoes-logo.png' | asset_url }}");
+}
+.press-pic-4{
+  background-image: url("{{ '100_layer_cake_logo.png' | asset_url }}");
+}
+.press-pic-5{
+  background-image: url("{{ '100_layer_cake_logo.png' | asset_url }}");
+}
+.press-pic-6{
+  background-image: url("{{ 'the_huffington_post.png' | asset_url }}");
+}
+.press-pic-7{
+  background-image: url("{{ 'lovepost-logo.png' | asset_url }}");
+}
+
+.knotmag-cover {
+  background-image: url("{{ 'knotmag_cover.jpg' | asset_url }}");
+}
+.ibt-logo {
+  background-image: url("{{ 'ibt-logo.jpg' | asset_url }}");
+}

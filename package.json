@@ -1,0 +1,22 @@
+{
+  "name": "lupaandpepi.com",
+  "version": "0.1.0",
+  "description": "Website for Lupa & Pepi",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hector Parra & Rachael Maloof",
+  "devDependencies": {
+    "growl": "^1.7.0",
+    "grunt": "^0.4.4",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-shopify": "git://github.com/hparra/grunt-shopify",
+    "dotenv": "^0.2.7",
+    "grunt-contrib-sass": "^0.7.3",
+    "grunt-autoprefixer": "^0.7.2",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-spritesmith-hd": "git://github.com/hparra/grunt-spritesmith-hd",
+    "grunt-contrib-concat": "^0.4.0"
+  }
+}

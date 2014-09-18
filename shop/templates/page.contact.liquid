@@ -1,0 +1,68 @@
+<div id="page" class="row">
+  <div class="span12">
+    <div class="page-with-contact-form">
+      {% form 'contact' %}
+
+        {% if form.posted_successfully? %}
+        <div class="successForm feedback">
+          <div class="feedback-wrap">
+            <p><h2>Grazie mille!</h2><h3 class="subheading"> We'll get back to you as soon as possible!</h3></p>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if form.errors %}
+        <div class="errorForm feedback">
+          {% for field in form.errors %}
+            <p>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="form-wrapper">
+
+          <div class="back-postcards">
+          </div>
+
+          <div id="contactFormWrapper" class="form-background clearfix">
+            <div class="contact-fields">
+              <div class="contact-field">
+                <label>Your Name:</label>
+                <input type="text" id="contactFormName" name="contact[name]" placeholder="Name" required/>
+              </div>
+              <div class="contact-field required-field">
+                <label>Email:</label>
+                <input type="email" id="contactFormEmail" name="contact[email]" placeholder="Email Address" required />
+              </div>
+              <div class="contact-field">
+                <label>Website(optional):</label>
+                <input type="text" id="website" name="website" placeholder="Website (optional)"/>
+              </div>
+            </div>
+            <div class="message-fields required-field">
+                <label>Message:</label>
+                <textarea rows="15" id="contactFormMessage" name="contact[body]" placeholder="Ciao..." required></textarea>
+            </div>
+            <div class="submit-fields">
+              <div>
+                <input type="submit" id="contactFormSubmit" value="Send" class="button" />
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-banner-wrap">
+            <div class="contact-banner collab-box">
+              <p>Do you want L&amp;P to create a custom design for you?</p>
+              <img class="collab-arrow" src="http://cdn.shopify.com/s/files/1/0420/0513/files/arrow.png?8717">
+              <a class="button" href="/collections/custom">let's get started!</a>
+            </div>
+          </div>
+
+        </div>
+      {% endform %}
+
+    </div>
+  </div>
+</div>
+
+

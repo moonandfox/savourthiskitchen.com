@@ -1,0 +1,199 @@
+nav ul li a{
+  font-size:15px;
+}
+
+nav > ul > li > a.current{
+  border-bottom: 2px solid $orange;
+}
+
+.nav-logo{
+  display: block;
+}
+
+.logo {
+  padding: 30px 0 15px 0;
+  
+  img {
+    // NOTE: MQs in styles.scss.liquid change this but those values work
+    max-width: 260px;
+  }
+}
+
+#header {
+  border-bottom: 1px $light-grey dashed;
+  margin-bottom: 18px;
+}  
+
+//
+// LINKBAR
+//
+
+.linkbar {
+  text-align: right;
+  margin-top: 36px; // align with logo
+}
+
+.social-links {
+  display: inline-block;
+  vertical-align: middle;
+  
+  .icon-social {
+    display: inline-block;
+    text-indent: 9999px; //  hide text
+    margin: 0;
+    float: right; // hacky hack
+  }
+}
+
+// cart container
+.header-cart {
+  display: inline-block;
+  vertical-align: middle;
+  
+  // anchor
+  .cart {
+    display: block;
+    position: relative;
+  }
+  
+  #cart-count {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 0;
+    line-height: 14px;
+  }
+  
+  .cart-label {
+    line-height: $cart-height; // width of icon
+  }
+}
+
+// SEARCH
+
+header .search-field {
+  
+  margin-top: 5px; // align with nav
+  text-align: right;
+  
+  // form
+  .search {
+    display: inline-block;
+    border: $grey-dotted-border;
+
+  }
+  
+  // input field
+  .search_box {
+    box-sizing: border-box;
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 4px 4px 4px 30px; // creates spacing for #go
+  }
+  
+  // submit button
+  #go {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    margin-left: 3px;
+  }
+}
+
+#header-row-one{
+  margin-bottom: 0;
+}
+#header-row-two {
+  margin-bottom: 12px; // overides default margin from .row
+}
+@media only screen and (max-width: $tablet-landscape-max-width) {
+  .linkbar {
+    margin-top: 18px; // realign with logo
+  }
+  
+  header .search-field {
+    margin: 2px;
+    
+    .search {
+      width: 100%;
+    }
+  }
+
+  // hack derived from original styles.scss.liquid code
+  #header-row-two {
+    .span9,
+    .span3 {
+      width: 270px; // equal to .span6 in tablet landscape
+    }
+  }
+  
+}
+
+@media only screen and (max-width: $mobile-landscape-max-width) {
+  
+  .nav-links {
+    display: block;
+  }
+
+  // hack derived from original styles.scss.liquid code
+  #header-row-two {
+    .span9,
+    .span3 {
+      width: 210px; // effectively spans half
+    }
+  }
+}
+
+@media only screen and (max-width: $mobile-portrait-max-width) {
+  
+  #header {
+    border: 0;
+  }
+  
+  .linkbar {
+    text-align: center;
+    margin-top: 0;
+  }
+  
+  header .search-field {
+    .search {
+      width: 100%;
+    }
+  }
+  
+  #header-row-two {
+
+    .span9,
+    .span3 {
+      width: 290px; // effectively spans max
+    }
+  }
+}
+
+//
+// nav links
+//
+
+nav.ul{
+  text-align:left;
+}
+nav ul li a{
+  box-sizing: border-box;
+  padding: 0 2px 0 2px;
+  margin-right:25px;
+  font-family: $reading-font;
+  text-transform:uppercase;
+  height: 40px;
+}
+
+nav ul li a:hover{
+  color: $dark-grey;
+  opacity: 1;
+  border-bottom: 2px solid $orange;
+}

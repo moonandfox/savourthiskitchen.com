@@ -1,0 +1,75 @@
+
+$default-grid-spacing: 2%;
+
+@mixin span-width($n, $margin-width) {
+  width: (100% - ($n - 1) * (2 * $margin-width)) / $n;
+  display: inline-block;
+  vertical-align: top;
+  float: left;
+}
+
+.full,
+.half,
+.third {
+  * {
+    box-sizing: border-box;
+  }
+}
+
+.half {
+  @include span-width(2, $default-grid-spacing);
+  
+  &:nth-child(2n) {
+    margin-left: $default-grid-spacing;
+  }
+  &:nth-child(2n+1) {
+    margin-right: $default-grid-spacing;
+  }
+}
+
+.full {
+  @include span-width(1, 0);
+}
+
+.third {
+  @include span-width(3, $default-grid-spacing);
+  
+  &:nth-child(3n) {
+    margin-left: $default-grid-spacing;
+  }
+  &:nth-child(3n+2) {
+    margin-left: $default-grid-spacing;
+    margin-right: $default-grid-spacing;
+  }
+  &:nth-child(3n+1) {
+    margin-right: $default-grid-spacing;
+  }
+}
+
+
+@media only screen and (max-width: $tablet-landscape-max-width){
+  .half {
+    width: 100%;
+    &:nth-child(2n) {
+      margin-left: 0;
+    }
+    &:nth-child(2n+1) {
+      margin-right: 0;
+    }
+  }
+
+  .third {
+    width: 100%;
+    &:nth-child(3n) {
+      margin-left: 0;
+    }
+    &:nth-child(3n+2) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    &:nth-child(3n+1) {
+      margin-right: 0;
+    }
+  }
+}
+

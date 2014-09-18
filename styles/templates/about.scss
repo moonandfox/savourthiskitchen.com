@@ -1,0 +1,16 @@
+#about {
+  
+  h1, h2, h3 {
+    font-family: $reading-font;
+    font-size: 22px;
+    line-height: 26px;
+  }
+  
+  .page-content {
+    img:first-child {
+      float: left;
+      margin: 0 15px 20px 0; // bottom margin prevents text wrap
+    }
+  }
+}
+

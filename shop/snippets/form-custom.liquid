@@ -1,0 +1,233 @@
+<!-- <div class="form-header">
+  <h2>want to create a custom design?</h2>
+  <h3 class="subheading"> Fill out this simple form &amp; let's get started!</h3>
+</div> -->
+
+<div class="form-container clearfix" id="custom-form">
+
+  <!-- http://docs.shopify.com/manual/configuration/store-customization/communicating-with-customers/provide-contact-points/adding-fields-to-the-liquid-contact-form -->
+  <div class="form-body">
+    {% form 'contact' %}
+
+      {% if form.posted_successfully? %}
+      <div class="successForm feedback">
+        <p>Grazie mille!<br>Expect to hear from me within 1 business day.</p>
+      </div>
+      {% endif %}
+
+      {% if form.errors %}
+      <div class="errorForm feedback">
+        <p>Oops, sorry. We were unable to submit your inquiry because it contained {{ form.errors | size | pluralize: 'an error', 'a few errors' }}. Please correct the following and submit again:</p>
+        {% for field in form.errors %}
+          <p>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div id="contactFormWrapper" class="clearfix">
+        <!-- name -->
+        <div class="field half required-field">
+          <label>Your Name</label>
+          <input type="text" id="contactFormName" name="contact[name]" required />
+        </div>
+
+        <!-- email -->
+        <div class="field half required-field">
+          <label>Your Email</label>
+          <input type="email" id="contactFormEmail" name="contact[email]" required />
+        </div>
+
+        <!--event type-->
+        <div class = "third-text-inputs">
+        <div class="field third">
+          <label>Event Type</label>
+          <input type="text" id="contactFormEventType" name="contact[type]" />
+        </div>
+
+        <!-- event date -->
+        <div class="field third">
+          <label>Event Date</label>
+          <input type="date" id="contactFormEventDate" name="contact[date]" />
+        </div>
+
+        <!-- quantity needed -->
+        <div class="field third">
+          <label>Quantity Needed</label>
+          <input type="number" min="1" id="contactFormQuantityNeeded" name="contact[quantity needed]" />
+        </div>
+      </div>
+
+        <!-- item interest -->
+        <!--
+          Invitations
+          Envelope Printing
+          Programs
+          RSVP Cards
+          Table Numbers
+          Menus
+          Information Cards
+          Escort Cards
+          Other
+        -->
+        <fieldset class="fieldset full">
+          <legend>Which item(s) are you interested in?</legend>
+          <div class="checkbox-field-list clearfix">
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddInvitations" name="contact[Invitation]" value="yes" />
+              <label for="contactFormAddInvitations"><span></span>Invitation</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddRSVP" name="contact[rsvp]" value="yes" />
+              <label for="contactFormAddRSVP"><span></span>RSVP Card</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddEnclosreCard" name="contact[Enclosure Card]" value="yes" />
+              <label for="contactFormAddEnclosreCard"><span></span>Enclosure Card</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddAnnouncement" name="contact[Announcement]" value="yes" />
+              <label for="contactFormAddAnnouncement"><span></span>Announcement</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddCalligraphy" name="contact[Calligraphy]" value="yes" />
+              <label for="contactFormAddCalligraphy"><span></span>Calligraphy</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddEnvelopePrinting" name="contact[Envelope Printing]" value="yes" />
+              <label for="contactFormAddEnvelopePrinting"><span></span>Envelope Printing</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddSaveTheDate" name="contact[Save the Date]" value="yes" />
+              <label for="contactFormAddSaveTheDate"><span></span>Save the Date</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddTableNumbers" name="contact[Table Numbers]" value="yes" />
+              <label for="contactFormAddTableNumbers"><span></span>Table Numbers</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddEscortCards" name="contact[Escort Cards]" value="yes" />
+              <label for="contactFormAddEscortCards"><span></span>Escort Cards</label>
+            </div>
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddPrograms" name="contact[Programs]" value="yes" />
+              <label for="contactFormAddPrograms"><span></span>Programs</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddMenus" name="contact[Menus]" value="yes" />
+              <label for="contactFormAddMenus"><span></span>Menus</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddPartyDecor" name="contact[Party Decor]" value="yes" />
+              <label for="contactFormAddPartyDecor"><span></span>Party Decor</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddFavors" name="contact[Favors]" value="yes" />
+              <label for="contactFormddFavors"><span></span>Favors</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddWelcomeBag" name="contact[Welcome Bag]" value="yes" />
+              <label for="contactFormAddWelcomeBag"><span></span>Welcome Bag</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddNotecard" name="contact[Notecard]" value="yes" />
+              <label for="contactFormAddNotecard"><span></span>Notecard</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddBusinessCard" name="contact[Business Card]" value="yes" />
+              <label for="contactFormAddBusinessCard"><span></span>Business Card</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddHolidayCard" name="contact[Holiday Card]" value="yes" />
+              <label for="contactFormAddHolidayCard"><span></span>Holiday Card</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddOther" name="contact[Other]" value="yes" />
+              <label for="contactFormAddOther"><span></span>Other</label>
+            </div>
+
+          </div>
+        </fieldset>
+
+        <!-- Printing Needs
+          Invitations with Ribbons
+          Gold Foil
+          Invitations with Pockets
+          Duplexed Invitations
+          Letterpress
+          Flat Invites
+        -->
+        <fieldset class="fieldset full">
+          <legend>Would you like to use a specific printing technique?</legend>
+          <div class="checkbox-field-list clearfix">
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddFlatPrinting" name="contact[Flat Printing]" value="yes" />
+              <label for="contactFormAddFlatPrinting"><span></span>Flat Printing</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddLetterpress" name="contact[Letterpress]" value="yes" />
+              <label for="contactFormAddLetterpress"><span></span>Letterpress</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddFoilStamp" name="contact[Foil Stamp]" value="yes" />
+              <label for="contactFormAddFoilStamp"><span></span>Foil Stamp</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddScreenPrinting" name="contact[Screen Printing]" value="yes" />
+              <label for="contactFormAddScreenPrinting"><span></span>Screen Printing</label>
+            </div>
+
+            <div class="field third">
+              <input type="checkbox" id="contactFormAddLaserCut" name="contact[LaserCut]" value="yes" />
+              <label for="contactFormAddLaserCut"><span></span>Laser Cut</label>
+            </div>
+
+          </div>
+        </fieldset>
+
+        <div class = "inspirations">
+          <div class="field half">
+            <label>URL's to Pinboard or other inspiration:</label>
+            <input type="url" id="contactFormIspiration1" name="contact[inspiration1]"/>
+          </div>
+
+          <div class="field half inspiration2">
+            <label>URL's to Pinboard or other inspiration:</label>
+            <input type="url" id="contactFormInspiration2" name="contact[inspiration2]"/>
+          </div>
+        </div>
+
+        <!-- body -->
+        <div class="field full required-field">
+          <label>Tell me in more detail about what you’re looking for:</label>
+          <textarea rows="15" id="contactFormMessage" name="contact[body]" required></textarea>
+        </div>
+
+        <div class="field full tc">
+          <input type="submit" id="contactFormSubmit" value="Andiamo!" class="button" />
+        </div>
+
+      </div>
+    {% endform %}
+  </div>
+</div>

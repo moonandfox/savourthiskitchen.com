@@ -1,0 +1,53 @@
+<div id="blog">
+  
+  <!-- Begin content -->
+  <div class="row">
+    
+    {% paginate blog.articles by 5 %}
+    
+    <div class="span8 articles">
+      {% for article in blog.articles %}
+        <div class="article clearfix">
+          <div class="article-header">
+            <h2 class="blog-title">
+              <a class = "blog-title" href="{{ article.url }}">{{ article.title }}</a>
+            </h2>
+            <div class = "date-author">
+              <span class="date">{{ article.published_at | date: "%B %d, %Y" }}</span>
+              <span class="author"> | Posted by {{ article.author }}</span>
+            </div>
+          </div>
+
+          {{ article.excerpt_or_content }}
+          
+          {% if article.comments_enabled? %}
+          <a href="{{ article.url }}#comments">Comments ({{ article.comments_count }})</a>
+          {% endif %}
+          
+          <div class="tags">
+            {% for tag in article.tags %}
+            {{ tag | link_to_tag: tag }}
+            {% endfor %}
+          </div>
+        </div>
+
+        {% unless forloop.last %}
+        <hr class="divider" />
+        {% endunless %}
+      {% endfor %}
+
+      {% include 'pagination' %}
+    </div>
+    
+    {% endpaginate %}
+    
+    <!-- Begin sidebar -->
+    <div class="span4">
+     {% include 'sidebar' %}
+    </div>
+    <!-- End sidebar -->
+    
+  </div>
+  <!-- End content -->
+  
+</div>

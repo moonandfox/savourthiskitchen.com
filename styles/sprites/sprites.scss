@@ -1,0 +1,107 @@
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  background-image: url(nth($sprite, 9));
+}
+
+@mixin sprite-hd($sprite) {
+  @if (length($sprite) == 10) {
+    $sprite-total-width: nth($sprite, 7);
+    $sprite-total-height: nth($sprite, 8);
+    @media (-o-min-device-pixel-ratio: 5/4),
+           (-webkit-min-device-pixel-ratio: 1.25),
+           (min-resolution: 120dpi) {
+      $hd-variable: nth($sprite, 10);
+      @include sprite-image($hd-variable);
+      background-size: $sprite-total-width $sprite-total-height;
+    }
+  }
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+  @include sprite-hd($sprite);
+}
+
+// shopify versions
+// also includes additional hover state parameter
+
+@mixin sprite-image-shopify($sprite) {
+  background-image: url("{{ '#{nth($sprite, 9)}' | asset_url }}");
+}
+
+@mixin sprite-hd-shopify($sprite, $sprite-hover) {
+  @if (length($sprite) == 10) {
+    $sprite-total-width: nth($sprite, 7);
+    $sprite-total-height: nth($sprite, 8);
+    @media (-o-min-device-pixel-ratio: 5/4),
+           (-webkit-min-device-pixel-ratio: 1.25),
+           (min-resolution: 120dpi) {
+      $hd-variable: nth($sprite, 10);
+      @include sprite-image-shopify($hd-variable);
+      background-size: $sprite-total-width $sprite-total-height;
+    }
+  }
+}
+
+@mixin sprite-shopify($sprite, $sprite-hover: false) {
+  @include sprite-image-shopify($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+  @if ($sprite-hover) {
+    &:hover,
+    &:focus,
+    &:active {
+      @include sprite-position($sprite-hover);
+    }
+  }
+  @include sprite-hd-shopify($sprite, $sprite-hover);
+}
+
+// actual icons
+// piggy backs on previous definitions in styles.scss.liquid
+// TODO: refactor rules in styles.scss.liquid
+
+.icon-social {
+  margin: 0;
+  overflow: hidden;
+  text-indent: -9999px;
+  
+  &.twitter {
+    @include sprite-shopify($twitter, $twitter-hover);
+  }
+  &.facebook {
+    @include sprite-shopify($facebook, $facebook-hover);
+  }
+  &.pinterest {
+    @include sprite-shopify($pinterest, $pinterest-hover);
+  }
+  &.instagram {
+    @include sprite-shopify($instagram, $instagram-hover);
+  }
+  &.atom {
+    @include sprite-shopify($rss, $rss-hover);
+  }
+}
+
+.icon-cart {
+  @include sprite-shopify($cart);
+  margin: 0;
+  display: block; 
+}

@@ -1,0 +1,35 @@
+.faq{
+  margin-bottom:550px;
+}
+.toc-questions{
+  list-style-type: none;
+  margin-left: 0;
+}
+.faq-category{
+  font-size: 15px;
+  border-bottom: $grey-dotted-border;
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+p.faq-question{
+  margin-bottom: 5px;
+  border-bottom: $grey-dotted-border;
+  padding-bottom: 2px;
+}
+.faq-question{
+  color: $orange;
+}
+a.faq-question{
+  color: $orange;
+  &:hover{
+    color: $dark-grey;
+  }
+
+}
+.faq-body{
+  margin-top:50px;
+}
+.faq-answer{
+
+}

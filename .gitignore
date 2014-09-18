@@ -1,0 +1,22 @@
+CMD.bat
+.DS_Store
+node_modules
+.env
+.env.*
+.sass-cache
+.build
+tmp
+shop/assets/lupa-and-pepi.scss.liquid
+shop/assets/checkout.css.liquid
+shop/assets/checkout.scss.liquid
+bower_components
+
+# images
+shop/assets/*.png
+shop/assets/*.ico
+shop/assets/*.jpg
+shop/assets/*.gif
+
+# javascript
+shop/assets/fancybox.js
+shop/assets/theme.js

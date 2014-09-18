@@ -1,0 +1,112 @@
+
+.form-body {
+
+  legend{
+    margin-bottom: 16px;
+  }
+
+  .field {
+    margin-bottom: 16px;
+
+    input {
+      width: 100%;
+      height: 28px;
+      line-height: normal;
+    }
+
+    input[type="checkbox"] {
+      width: auto;
+      height: auto;
+    }
+
+    input[type="submit"] {
+      width: auto;
+    }
+  }
+
+  .fieldset {
+    margin: 0 0 16px 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .field + .fieldset {
+    margin-top: 16px;
+  }
+
+  textarea {
+    width: 100%;
+    resize: none;
+  }
+
+  .checkbox-field-list {
+    .field {
+      margin-bottom: 14px;
+    }
+  }
+}
+
+// form helpers
+
+.required-field{
+  label:after {
+    content: "*";
+    color: $orange;
+  }
+}
+
+// form container
+
+.form-hider {
+  display: none;
+}
+
+.form-container{
+  border:$grey-dotted-border;
+  margin-bottom: 10px;
+}
+
+.form-header{
+  border:$grey-dotted-border;
+  padding:20px 20px 10px 20px;
+  text-align:center;
+  color: $orange;
+  margin-bottom: 20px;
+
+  .heading{
+    margin-bottom: 0;
+  }
+
+  .subheading{
+    font-family:$reading-font;
+    text-transform:uppercase;
+    color:$dark-grey;
+    font-size:16px;
+    margin-bottom:0;
+  }
+}
+
+.form-body{
+  padding:20px;
+}
+
+// message elements produced by contact form submission
+
+.errorForm p {
+  color: red;
+}
+
+.successForm p {
+  color: $orange;
+  text-align: center;
+}
+.successForm feedback{
+
+}
+
+.inspiration2{
+  color:white;
+}
+p.click-here{
+  margin: 15px 0 0 0;
+}

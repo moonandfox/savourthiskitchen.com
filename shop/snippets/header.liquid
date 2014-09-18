@@ -1,0 +1,79 @@
+<!-- Begin navigation -->
+
+<header id="header">
+
+  <!-- row 1 -->
+  <div id="header-row-one" class="row">
+    
+    <!-- logo -->
+    <div class="span5">
+      <div class="nav-logo">  
+        <div class="logo">
+          {% if settings.use_logo %}
+          <h1><a href="/"><img src="{{ 'logo-520.png' | asset_url }}" alt="{{ shop.name }}" /></a></h1>
+          {% if template == 'index' %}
+          <h1 style="display:none"><a href="/">{{ shop.name }}</a></h1>
+          {% endif %}
+          {% else %}
+          <h1><a href="/">{{ shop.name }}</a></h1>
+          {% endif %}
+        </div> 
+      </div>
+    </div>
+    
+    <!-- linkbar -->
+    <div class="span7 linkbar">
+      
+      <div class="social-links">
+        {% if settings.atom_link != blank %}<a href="{{ settings.atom_link }}" title="{{ shop.name }} news" class="icon-social atom" target="_blank">Blogfeed</a>{% endif %}
+        {% if settings.youtube_link != blank %}<a href="{{ settings.youtube_link }}" title="{{ shop.name }} on YouTube" class="icon-social youtube" target="_blank">YouTube</a>{% endif %}
+        {% if settings.facebook_link != blank %}<a href="{{ settings.facebook_link }}" title="{{ shop.name }} on Facebook" class="icon-social facebook" target="_blank">Facebook</a>{% endif %}
+        {% if settings.twitter_link != blank %}<a href="{{ settings.twitter_link }}" title="{{ shop.name }} on Twitter" class="icon-social twitter" target="_blank">Twitter</a>{% endif %}        
+        {% if settings.pinterest_link != blank %}<a href="{{ settings.pinterest_link }}" title="{{ shop.name }} on Pinterest" class="icon-social pinterest" target="_blank">Pinterest</a>{% endif %}
+        {% if settings.instagram_link != blank %}<a href="{{ settings.instagram_link }}" title="{{ shop.name }} on Instagram" class="icon-social instagram" target="_blank">Instagram</a>{% endif %}
+        {% if settings.vimeo_link != blank %}<a href="{{ settings.vimeo_link }}" title="{{ shop.name }} on Vimeo" class="icon-social vimeo">Vimeo</a>{% endif %}
+        {% if settings.tumblr_link != blank %}<a href="{{ settings.tumblr_link }}" title="{{ shop.name }} on Tumblr" class="icon-social tumblr" target="_blank">Tumblr</a>{% endif %}
+        {% if settings.google_link != blank %}<a href="{{ settings.google_link }}" title="{{ shop.name }} on Google+" class="icon-social google" target="_blank">Google+</a>{% endif %}
+      </div>
+      
+      <!-- cart -->
+      <div id="cart-target" class="header-cart {% if cart.item_count != 0 %}has-items{% endif %}">
+        <a href="/cart" class="cart" title="Shopping Cart">
+          <span class="icon-cart"></span>
+          <span id="cart-count">{{ cart.item_count }}</span>
+        </a>
+      </div>
+        
+    </div>
+  </div>
+  
+  <!-- row 2 -->
+  <div id="header-row-two" class="row">
+
+    <!-- nav -->
+    <div class="span9">
+      <div class="nav-links">
+        <section id="nav">
+          <nav class="main">
+            {% include 'dropdown' %}
+          </nav> 
+          <nav class="mobile clearfix">
+            {% include 'mobile-menu' %}
+          </nav>
+        </section> 
+      </div> 
+    </div>
+    
+    <!-- search -->
+    <div class="span3">
+      <div class="search-field">
+        <form class="search" action="/search">
+          <input type="image" src="{{ 'icon-search.png' | asset_url }}" alt="Go" id="go" />
+          <input type="text" name="q" class="search_box" placeholder="I'm looking for..." value="{{ search.terms }}" />
+        </form>
+      </div>
+    </div>
+    
+  </div>
+  
+</header> 

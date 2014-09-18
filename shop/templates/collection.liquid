@@ -1,0 +1,157 @@
+<div id="collection">
+
+  {% paginate collection.products by settings.pagination_limit %}
+
+  <!-- Begin collection info -->
+  <div class="row breadcrumbs-margin">
+    <div class="span12">
+
+      <!-- Begin breadcrumb 
+     <div class="breadcrumb clearfix">
+        <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="url"><span itemprop="title">Home</span></a></span>
+        <span class="arrow-space">&#62;</span>
+        <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ collection.url }}" title="{{ collection.title | escape }}" itemprop="url"><span itemprop="title">{{ collection.title }}</span></a></span>
+
+        {% if current_tags %}
+          {% for tag in current_tags %}
+            <span class="arrow-space">&#62;</span>
+            <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handleize }}" title="{{ tag | escape }}" itemprop="url"><span itemprop="title">{{ tag }}</span></a></span>
+          {% endfor %}
+        {% endif %}
+
+        {% if paginate.pages != 0 %}
+          <span class="arrow-space">&#62;</span> <strong>Page {{ paginate.current_page }} of {{ paginate.pages }}</strong>
+        {% endif %} 
+      </div>
+       End breadcrumb -->
+
+      <!-- Begin collection description -->
+      {% if collection.description != "" %}
+        {{ collection.description }}
+      {% endif %}
+      <!-- End collection description -->
+
+    </div>
+  </div>
+  <!-- End collection info -->
+
+  <!-- Begin no products -->
+  {% if collection.products.size == 0 %}
+  <div class="row">
+    <div class="span12 expanded-message">
+      <p>No products found</p>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="row">
+    <div class="products span9 clearfix">
+
+      <!-- custom-designs form -->
+
+      {% include 'pagination' %}
+
+      <!-- products -->
+      <div class="product-list clearfix">
+        {% for product in collection.products limit: settings.pagination_limit %}
+
+          <!-- search if product is in custom collection -->
+          {% assign is_custom_collection = false %}
+          {% for c in product.collections %}
+            {% if c.title == 'Custom' %}
+              {% assign is_custom_collection = true %}
+            {% endif %}
+          {% endfor %}
+          
+          <!-- check if using /types "collection" -->
+          {% if collection.handle %}
+            {% assign is_types = false %}
+          {% else %}
+            {% assign is_types = true %}
+          {% endif %}
+
+          {% unless is_types and is_custom_collection %}
+            {% include 'product-loop' with collection.handle %}
+          {% endunless %}
+          
+        {% endfor %}
+      </div>
+
+      {% include 'pagination' %}
+      
+      <!-- custom-designs form -->
+      {% if collection.handle != 'custom' %}
+        <a href="/collections/custom">
+          <div class="shop-header">
+            <h2>don't see what you need?</h2>
+            <h3 class="subheading"> Check out our custom work &amp; let's collaborate!</h3>
+            <p class="click-here">- CLICK HERE -</p>
+          </div>
+        </a>
+      {% endif %}
+      {% if collection.handle == 'custom' %}
+        <a class="form-custom-link" href="#">
+          <div class="shop-header">
+            <h2>want to create a custom design?</h2>
+            <h3 class="subheading"> fill out this simple form &amp; let's get started!</h3>
+            <p class="click-here">- CLICK HERE -</p>
+          </div>
+        </a>
+        <div class="form-hider">
+          {% include 'form-custom' %}
+        </div>
+      {% endif %}
+
+      
+
+    </div>
+
+    <!--category list-->
+    <div class="span3">
+      <div class="clearfix category-type-list">
+
+        <!--list of product types-->
+        <div class="shop-sidebar-title">Item</div>
+        {% if collection.handle != 'custom' %}
+          <ul class="product-type-list">
+            {% for type in collections.all.all_types %}
+              <li>{{ type | link_to_type }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <ul class="product-type-list">
+            {% for type in collections.custom.all_types %}
+              <li><a href="/collections/custom/{{ type | downcase | replace: ' ', '-' }}">{{ type }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <!-- Suite (list of collections) -->
+        {% if collection.handle != 'custom' %}
+          <div class="shop-sidebar-title">Suite</div>
+          <ul class="collection-list">
+            {% for collection in collections %}
+              {% unless collection.handle == 'all' or collection.handle == 'custom' %}
+                <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+              {% endunless %}
+            {% endfor %}
+          </ul>
+        {% else %}
+          <div class="shop-sidebar-title">Technique</div>
+          {% assign myArray = "Letterpress|Foil|Flat Printing|Laser Cut|Laser Etching|Screen Printing" | split: "|" %}
+          <ul>
+            {% for item in myArray %} 
+              <li><a href="/collections/custom/{{item | replace: ' ', '-' }}">{{ item }}</a></li>
+            {% endfor %} 
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+
+
+  </div>
+
+  {% endpaginate %}
+  <!-- End no products -->
+
+</div>
